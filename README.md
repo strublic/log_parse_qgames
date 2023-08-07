@@ -1,14 +1,12 @@
 # LogParser
 
+- Ruby 3.2.2
+
 ## Usage
 
-- run command line at terminal
+- run command line at terminal in root path of the this project
 
 `./exe/log_parser`
-
-or
-
-`./exe/log_parser /some/path/some_file.log`
 
 
 ## Development
