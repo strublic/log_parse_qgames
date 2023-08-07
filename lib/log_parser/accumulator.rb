@@ -6,7 +6,7 @@ module LogParser
       @name = ""
       @total_kills = 0
       @players = 0
-      @kills = {}
+      @kills = Hash.new(0)
       @get_players = {}
     end
 
@@ -20,19 +20,13 @@ module LogParser
         kills_by_player = entry.get_kills.select{|kill| kill.id_killer == killer.id}
         
         if killer.id == "1022" 
-          #removes death from played that died
-          #players died by world
+          #removes kills from player that died by world
           kills_by_player.each do |kp|
             player_died = self.get_players.find{|p| p.id == kp.id_killed}
-            counter_player_killed = kills_by_player.select{|pk| pk.id_killed == player_died.id}
-            self.kills[player_died.name] = self.kills[player_died.name] || -counter_player_killed.count
+            self.kills[player_died.name] -= 1
           end
         else
-          if self.kills[killer.name].nil?
-            self.kills[killer.name] = kills_by_player.count
-          else
             self.kills[killer.name] += kills_by_player.count
-          end
         end
       end
     end
