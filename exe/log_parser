@@ -1,3 +1,20 @@
 #!/usr/bin/env ruby
 
+require "bundler/setup"
 require "log_parser"
+require "pry"
+
+def request_argument
+  "file_upload/qgames.log"
+end
+
+file_path = ARGV[0] || request_argument
+puts file_path
+begin
+  parser = LogParser::Parser.new(file_path)
+  puts parser.format
+rescue LogParser::Error => e
+  STDERR.puts "Couldn't parse log: #{e.message}"
+
+  exit 2
+end
