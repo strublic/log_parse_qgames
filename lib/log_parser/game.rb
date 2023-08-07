@@ -15,7 +15,7 @@ class Game
   end
 
   def add_player(player)
-    @players.push(player)
+    @players.push(player) unless @players.find{|p| p.id == player.id}
   end
 
   def add_kill(kill)
