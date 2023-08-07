@@ -2,10 +2,14 @@
 
 ## Usage
 
-#command line to run
-./exe/log_parser
+- run command line at terminal
+
+`./exe/log_parser`
+
 or
-#./exe/log_parser /some/path/some_file.log
+
+`./exe/log_parser /some/path/some_file.log`
+
 
 ## Development
 
