@@ -13,6 +13,8 @@ module LogParser
         if line.include?("InitGame")
           i+=1
           currentGame = Game.new("Game: ##{i}")
+          player = EntryPlayer.new("1022", "<world>")
+          currentGame.add_player(player)
         end
 
         if !currentGame.nil? && !line.include?("InitGame")
